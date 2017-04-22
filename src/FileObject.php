@@ -43,7 +43,7 @@ class FileObject extends SplFileObject
      * @param $recursion
      * @return bool
      */
-    public function make($mode = 0755, $recursion = true)
+    public function makeDir($mode = 0755, $recursion = true)
     {
         if (!file_exists(dirname($recursion))) {
             mkdir(dirname($recursion), $mode, $recursion);
@@ -51,11 +51,15 @@ class FileObject extends SplFileObject
 
         if (true === touch($this->filename)) {
             $this->exists = true;
-            print_r($this);
             $this->__construct($this->filename);
             return true;
         }
 
         return false;
+    }
+
+    public function touch()
+    {
+
     }
 }

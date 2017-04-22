@@ -24,9 +24,31 @@ class EnvironmentObject
         return 'cli' === php_sapi_name();
     }
 
+    /**
+     * @return bool
+     */
     public function isLocal()
     {
         return '127.0.0.1' === $this->getLocalIp();
+    }
+
+    /**
+     * @param $name
+     * @return array|false|string
+     */
+    public function getEnv($name)
+    {
+        return getenv($name);
+    }
+
+    /**
+     * @param $name
+     * @param $value
+     * @return bool
+     */
+    public function setEnv($name, $value)
+    {
+        return putenv(sprintf('%s=%s', $name, $value));
     }
 
     /**

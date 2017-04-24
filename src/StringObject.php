@@ -46,7 +46,7 @@ class StringObject
      */
     public function hasCharacter($needle, $offset = 0)
     {
-        return strpos($this->string, $needle, $offset);
+        return false !== strpos($this->string, $needle, $offset);
     }
 
     /**

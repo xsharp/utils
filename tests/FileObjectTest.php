@@ -17,7 +17,8 @@ class FileObjectTest extends PHPUnit_Framework_TestCase
     {
         $file = new FileObject(__DIR__ . '/test.log');
 
-        var_dump($file->fwrite('hello world'));
+        $written = $file->fwrite('hello world');
+        $this->assertEquals(0, $written);
 
         $file->fread(10);
     }
